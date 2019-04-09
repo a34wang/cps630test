@@ -1,11 +1,11 @@
-const originalNewsFollowing = ["CANADIAN RED CROSS", "The Salvation Army"];
+const originalNewsFollowing = ["food bank", "CANADIAN RED CROSS", "The Salvation Army"];
 let newsFollowing = originalNewsFollowing.map(following => {
   return following; //If want to transform array
 }); 
 
 const newsApiKey = "7baf4530cad8435fbfcbd1303e3da391";
 
-const numbToFetch = 5;
+const numbToFetch = 4;
 
 class News {
   constructor(name) {
@@ -43,6 +43,7 @@ class News {
 
 let news = [];
 async function fetchAllNews() {
+  document.getElementById('fetchNews').style.display = 'none';
   await Promise.all(
     newsFollowing.map(async following => {
       const newsSection = new News(following);
@@ -146,13 +147,14 @@ function expandToggle(e) {
 function hoverExpand(e) {
   const news = closestParentbyClass(e.target, "minor-news");
   news.style.width =
-    parseFloat(window.getComputedStyle(news).width) * 1.5 + "px";
+    parseFloat(window.getComputedStyle(news).width) * 1.3 + "px";
   news.style.height =
-    parseFloat(window.getComputedStyle(news).height) * 1.5 + "px";
+    parseFloat(window.getComputedStyle(news).height) * 1.3 + "px";
   news.style.position = "absolute";
   news.style.zIndex = 11;
   const newsSec = closestParentbyClass(news, "news-sections");
   const intId = news.id.replace(/\D/g, "");
+  newsSec.style.overflow = 'visible';
   document.querySelector(`#${newsSec.id} > .section-cover`).style.display =
     "block";
   document.querySelector(`#${newsSec.id} > #link${intId}`).style.display =
@@ -162,12 +164,13 @@ function hoverExpand(e) {
 function undoExpand(e) {
   let news = e;
   news.style.width =
-    parseFloat(window.getComputedStyle(news).width) / 1.5 + "px";
+    parseFloat(window.getComputedStyle(news).width) / 1.3 + "px";
   news.style.height =
-    parseFloat(window.getComputedStyle(news).height) / 1.5 + "px";
+    parseFloat(window.getComputedStyle(news).height) / 1.3 + "px";
   news.style.position = "static";
   news.style.zIndex = 1;
   const newsSec = closestParentbyClass(news, "news-sections");
+  newsSec.style.overflow = 'hidden';
   const intId = news.id.replace(/\D/g, "");
   document.querySelector(`#${newsSec.id} > .section-cover`).style.display =
     "none";
