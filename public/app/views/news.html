@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ambrose Kuo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/news.css" />
+    <script src="../controller/news.js"></script>
+  </head>
+
+  <body>
+    <button onclick="fetchAllNews(); return false;"> show news</button>
+    <section class="sidebar">
+
+    </section> 
+    <header>
+        <nav> <img id="profile" src="img/profile.png">
+          <div id="loginform" style="display: none">
+            <form id="login" method="POST" action="/investorsreport/login" style="display: none">
+              <input id="user" type="text" name="username" placeholder="Username">
+              <input id="pass" type="password" name="password" placeholder="Password">
+              <input id="logbtn" type="submit" value="Login" name="login">
+              <br> <a href="signup.html">Register</a> </form>
+            <button id="signout" onclick="signout()" style="display: none">Sign Out</button>
+          </div>
+          <div id="navMain"> <a class="tir" href="/investorsreport"><strong>The Investors Report</strong></a>
+            <div id="CompareBar">
+              <form id="CompareBar" action="CReport.html" method="GET">
+                <input type="text" class="compare" id="companyOne" placeholder="Company #1" name="companyOne">
+                <input type="text" class="compare" id="companyTwo" placeholder="Company #2" name="companyTwo">
+                <input type="submit" value="Compare" id="compare1"> </form>
+            </div>
+          </div>
+      </nav>
+      <div id="errormessage">dis fine</div>
+    </header>
+    <section class="news-container" id="main-container">
+    </section>
+  </body>
+</html>

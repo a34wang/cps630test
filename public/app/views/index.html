@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app="userApp" ng-controller="loginCtrl as login">
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="app/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="app/css/base.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="app/css/fork-awesome.min.css"
+      type="text/css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6c915" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="app/angular-css/angular-css.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/controller/signUpCtrl.js"></script>
+    <script src="app/controller/logInCtrl.js"></script>
+    <script src="app/controller/userServices.js"></script>
+    <script src="app/controller/authServices.js"></script>
+    <script src="app/controller/accessSession.js"></script>
+    <script src="app/controller/news.js"></script>
+
+    <base href="/" />
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div ng-if="!login.isLoggedIn()" class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><a href="/signup">Sign Up</a></li>
+          <li><a href="/login">Log In</a></li>
+        </ul>
+      </div>
+      <div ng-if="login.isLoggedIn()">
+        <li><a href="/main" ng-click="login.logOut()">Log Out</a></li>
+        Logged in as {{ login.getUser() }}
+        <div class="container-fluid">
+          Account Information:
+        </div>
+      </div>
+      <div class="container">
+        <div
+          class="collapse navbar-collapse navbar-left"
+          id="navbar-liberapay-collapse"
+        >
+          <ul class="nav navbar-nav">
+            <li>
+              <a
+                class="navbar-brand"
+                href="/main"
+                data-toggle="dropdown"
+                aria-expanded="true"
+              >
+                <h4>Homepage</h4>
+              </a>
+            </li>
+
+            <li>
+              <div class="dropdown dropdown-hover">
+                <a
+                  class="dropdown-toggle navbar-btn "
+                  href="/about"
+                  data-toggle="dropdown"
+                  aria-expanded="true"
+                >
+                  <h4>About</h4>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="active">
+                    <a href="/about"> Introduction</a>
+                  </li>
+                  <li>
+                    <a href="/contact"> Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a href="/main"> Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/news">News</a>
+    </nav>
+
+    <div ng-view></div>
+  </body>
+</html>
